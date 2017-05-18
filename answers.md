@@ -184,10 +184,6 @@ $ sudo /etc/init.d/datadog-agent restart
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-11.png)
 
-##### Snapshot of the `test.support.random` metric showing that it is going above 0.90
-
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-7.png)
-
 ## Visualizing Data (Level 2)
 
 After collecting your metrics, you can use Dashboards to view them in an organized way.
@@ -220,11 +216,16 @@ Below are the steps to customize a Dashboard:
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-6.png)
 
-> What is the difference between a timeboard and a screenboard?
+##### Annotate the `test.support.random` metric graph using snapshots
+The graph below is annotated to indicate that the metric has gone above 0.90
+
+![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-7.png)
+
+> What is the difference between a TimeBoard and a ScreenBoard?
 >
-> Timeboards are scoped at the same time while screenboards can have widgets tha each have a different timeframe.
+> TimeBoards are scoped at the same time while ScreenBoards can have widgets tha each have a different timeframe.
 >
-> Timeboards are used for correlations, while screenboards are for sharing data.
+> TimeBoards are used for correlations, while ScreenBoards are for sharing data.
 > 
 > This [link](https://help.datadoghq.com/hc/en-us/articles/204580349-What-is-the-difference-between-a-ScreenBoard-and-a-TimeBoard-) describes in detail the difference between timeboard and screenboards.
 
@@ -257,7 +258,7 @@ Below are the steps to setup a Monitor
     ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-2.png)
 
 1. Define the conditions
-   
+
     ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-3.png)
 
 1. Email is sent when conditions set are met
@@ -276,6 +277,10 @@ Below are the steps to setup a Monitor
 
 > Refer below for Dashboard links
 >
+> MySQL TimeBoard
+>
 > https://app.dataoghq.com/dash/290198/mysql---overview-cloned?live=true&page=0&is_auto=false&from_ts=1495115678900&to_ts=1495119278900&tile_size=m
+>
+> MongoDB TimeBoard
 >
 > https://app.datadoghq.com/screen/184678/mongodb
