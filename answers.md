@@ -226,6 +226,8 @@ Below are the steps to customize a Dashboard
 > Timeboards are scoped at the same time while screenboards can have widgets tha each have a different timeframe.
 >
 > Timeboards are used for correlations, while screenboards are for sharing data.
+> 
+> This [link](https://help.datadoghq.com/hc/en-us/articles/204580349-What-is-the-difference-between-a-ScreenBoard-and-a-TimeBoard-) describes in detail the difference between timeboard and screenboards.
 
 Sample of Timeboard:
 
@@ -234,8 +236,6 @@ Sample of Timeboard:
 Sample of Screenboard:
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Screenboard.png)
-
- Reference: https://help.datadoghq.com/hc/en-us/articles/204580349-What-is-the-difference-between-a-ScreenBoard-and-a-TimeBoard-
 
 ## Alerting on Data (Level 3)
 
