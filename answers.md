@@ -1,16 +1,16 @@
 # Getting Started with Datadog on Ubuntu 12.04 and MySQL
 
 ## Running Ubuntu 12.04 on Vagrant (Level 0)
-This section assumes that a working copy of Vagrant is installed
+This section assumes that a working copy of Vagrant is installed.
 1. Starting the VM:
-  ```
-  $ vagrant init hashicorp/precise64
-  $ vagrant up
-  ```
+    ```
+    $ vagrant init hashicorp/precise64
+    $ vagrant up
+    ```
 1. Accessing the VM:
-  ```
-  $ vagrant ssh
-  ```
+    ```
+    $ vagrant ssh
+    ```
 > Please refer to this [link](https://www.vagrantup.com/docs/installation/) for details on how to install Vagrant.
 ## Collecting Data from Ubuntu 12.04 (Level 1)
 
@@ -247,24 +247,26 @@ Below are the steps to setup a Monitor
 
 1. Select New Monitor page
 
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-1.png)
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-1.png)
 
 1. Select a monitor type
 
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-2.png)
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-2.png)
 
 1. Define the conditions
 
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-3.png)
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-3.png)
 
 1. Email is sent when conditions set are met
 
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Monitor%20Alert.png)
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Monitor%20Alert.png)
 
 ##### Schedule Downtime for this monitor that silences it from 7pm to 9am daily
 
 1. Click 'Schedule Downtime', and set the schedule and message to send during downtime.
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-4.png)
 
-2. Email is sent on downtime
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Downtime%20Email.png)
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-4.png)
+
+1. Email is sent on downtime
+
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Downtime%20Email.png)
