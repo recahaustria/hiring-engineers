@@ -201,15 +201,17 @@ Below are the steps to customize a Dashboard
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-2.1.png)
 
-##### Select and add widget on to the board
+##### Select and add a widget on to the board
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-2.2.png)
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-3.png)
 
+![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-4.png)
+
 ##### Add the `test.support.random` metric from the Custom Agent check into the dashboard
 
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-4.png)
+![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-4a.png)
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-5.png)
 
