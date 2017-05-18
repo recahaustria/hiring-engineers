@@ -38,9 +38,7 @@ The next screen will ask you to setup a **Datadog Agent**.
 
 ##### Select the OS where you want to install the Agent and run the command shown in the screen:
 
-```
-$ DD_API_KEY=<YOURKEY> bash -c "$(curl -L https://raw.githubusercontent.com/DataDog/dd-agent/master/packaging/datadog-agent/source/install_agent.sh)"
-```
+![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-0.png)
 
 > Tip: the value of `DD_API_KEY` associates the installed Agent to your Datadog account.
 
@@ -48,7 +46,7 @@ $ DD_API_KEY=<YOURKEY> bash -c "$(curl -L https://raw.githubusercontent.com/Data
 
 ##### If the installation is successful, the "Finish" button will be enabled in the screen.
 
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-0.png)
+![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-0a.png)
 
 ##### You can also add **tags** to the Datadog Agent by updating the file `/etc/dd-agent/datadog.conf`
 
