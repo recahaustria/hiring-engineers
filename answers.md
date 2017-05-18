@@ -1,20 +1,19 @@
 # Getting Started with Datadog on Ubuntu 12.04 and MySQL
 
 ## Running Ubuntu 12.04 on Vagrant (Level 0)
-
-* This section assumes that a working copy of Vagrant is installed
-* Please refer to this [link](https://www.vagrantup.com/docs/installation/) for details on how to install Vagrant.
-* Starting the VM:
-```
-$ vagrant init hashicorp/precise64
-$ vagrant up
-```
-* Accessing the VM:
-```
-$ vagrant ssh
-```
-
+This section assumes that a working copy of Vagrant is installed
+1. Starting the VM:
+  ```
+  $ vagrant init hashicorp/precise64
+  $ vagrant up
+  ```
+1. Accessing the VM:
+  ```
+  $ vagrant ssh
+  ```
+> Please refer to this [link](https://www.vagrantup.com/docs/installation/) for details on how to install Vagrant.
 ## Collecting Data from Ubuntu 12.04 (Level 1)
+
 ### Signing-up with Datadog
 The first step is to sign-up an account with [Datadog](https://www.datadoghq.com/).
 
@@ -59,7 +58,7 @@ tags: stack:vagrant, env:test, role:server
 
 > Please refer to this [link](http://docs.datadoghq.com/guides/tagging/) for a detailed guide to tagging.
 
-##### You can see the tags you've set in the **Host Map**.
+##### You should see the tags you've set in the **Host Map**.
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-4.png)
 
@@ -223,6 +222,8 @@ Below are the steps to setup a Custom Dashboard
 > Timeboards are scoped at the same time while screenboards can have widgets tha each have a different timeframe.
 >
 > Timeboards are used for correlations, while screenboards are for sharing data.
+>
+> Please refer to this [link](https://help.datadoghq.com/hc/en-us/articles/204580349-What-is-the-difference-between-a-ScreenBoard-and-a-TimeBoard-) for more information
 
 Sample of Timeboard:
 
@@ -231,8 +232,6 @@ Sample of Timeboard:
 Sample of Screenboard:
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Screenboard.png)
-
- Reference: https://help.datadoghq.com/hc/en-us/articles/204580349-What-is-the-difference-between-a-ScreenBoard-and-a-TimeBoard-
 
 ## Alerting on Data (Level 3)
 
@@ -247,16 +246,20 @@ Below are the steps to setup a Monitor
 ##### Setup a monitor that alerts when it goes above 0.90 at least once during the last 5 mins.
 
 1. Select New Monitor page
+
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-1.png)
 
 1. Select a monitor type
+
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-2.png)
 
 1. Define the conditions
+
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-3.png)
 
 1. Email is sent when conditions set are met
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Monitor Alert.png)
+
+![](https://dl.dropboxusercontent.com/u/10874665/datadog/Monitor%20Alert.png)
 
 ##### Schedule Downtime for this monitor that silences it from 7pm to 9am daily
 
@@ -264,4 +267,4 @@ Below are the steps to setup a Monitor
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-4.png)
 
 2. Email is sent on downtime
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Downtime Email.png)
+![](https://dl.dropboxusercontent.com/u/10874665/datadog/Downtime%20Email.png)
