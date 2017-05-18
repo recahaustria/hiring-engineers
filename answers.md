@@ -2,7 +2,7 @@
 
 ## Running Ubuntu 12.04 on Vagrant (Level 0)
 
-* This guide assumes that a working copy of Vagrant is installed
+* This section assumes that a working copy of Vagrant is installed
 * Please refer to this [link](https://www.vagrantup.com/docs/installation/) for details on how to install Vagrant.
 * Starting the VM:
 ```
@@ -15,7 +15,8 @@ $ vagrant ssh
 ```
 
 ## Collecting Data from Ubuntu 12.04 (Level 1)
-The fist step is to sign-up an account with [Datadog](https://www.datadoghq.com/).
+### Signing-up with Datadog
+The first step is to sign-up an account with [Datadog](https://www.datadoghq.com/).
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Signup.png)
 
@@ -28,9 +29,9 @@ The next step is to provide some optional information about your stack and organ
 The next screen will ask you to setup a **Datadog Agent**.
 
 >What is a Datadog Agent?
-
+>
 >A Datadog Agent is a tool that collects data or metrics from the host OS and sends it to the server (Datadog) which can then be interpreted for monitoring.
-
+>
 > Please refer to this [link](http://docs.datadoghq.com/guides/basic_agent_usage/) for more information about the Datadog Agent.
 
 ##### Select the OS where you want to install the Agent and run the command shown in the screen:
@@ -38,6 +39,7 @@ The next screen will ask you to setup a **Datadog Agent**.
 ```
 $ DD_API_KEY=<YOURKEY> bash -c "$(curl -L https://raw.githubusercontent.com/DataDog/dd-agent/master/packaging/datadog-agent/source/install_agent.sh)"
 ```
+
 > Tip: the value of `DD_API_KEY` associates the installed Agent to your Datadog account.
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-2.png)
@@ -204,7 +206,7 @@ Below are the steps to setup a Custom Dashboard
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-3.png)
 
-##### Add test.support.random metric from the Custom Agent check into the dashboard
+##### Add `test.support.random` metric from the Custom Agent check into the dashboard
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-4.png)
 
@@ -235,11 +237,11 @@ Sample of Screenboard:
 
 ## Alerting on Data (Level 3)
 
+Once you're happy with your dashboard, you may want to be alerted when an event occurs.
+
 >What is a Monitor?
 
->Monitors are used to check metrics, availability and more then send notifications based on conditions. Click [here] to learn more about monitors.
-
-Once you're happy with your dashboard, you may want to be alerted when an event occurs
+>Monitors are used to check metrics, availability and more then send notifications based on conditions. Click [here](http://docs.datadoghq.com/guides/monitors/) to learn more about monitors.
 
 Below are the steps to setup a Monitor
 
@@ -259,7 +261,7 @@ Below are the steps to setup a Monitor
 
 ##### Schedule Downtime for this monitor that silences it from 7pm to 9am daily
 
-1. Clicke 'Schedule Downtime', and set the schedule and message to send during downtime.
+1. Click 'Schedule Downtime', and set the schedule and message to send during downtime.
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-4.png)
 
 2. Email is sent on downtime
