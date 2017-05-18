@@ -146,7 +146,7 @@ The MySQL Dashboard:
 > Please refer to this [link](http://docs.datadoghq.com/integrations/mysql/) for a detailed instruction on how to setup a MySQL integration
 
 ### Creating a custom Agent Check
-This example will show you how to write a Custom Agent Check that sends random metrics to Datadog
+This example will show you how to write a Custom Agent Check that sends random values as a custom metric (`test.support.random`) to Datadog.
 
 > What is an Agent Check?
 >
@@ -182,14 +182,19 @@ $ sudo -u dd-agent dd-agent check random
 ```
 $ sudo /etc/init.d/datadog-agent restart
 ```
-##### View the Custom Metric in "Metrics Explorer"
+##### View the `test.support.random` metric in "Metrics Explorer"
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-11.png)
 
+##### Snapshot of the `test.support.random` metric showing that it is going above 0.90
+
+![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-7.png)
+
 ## Visualizing Data (Level 2)
+
 After collecting your metrics, you can use Dashboards to view them in an organized way.
 
-Below are the steps to customize a Dashboard
+Below are the steps to customize a Dashboard:
 
 ##### Clone the MySQL Integration dashboard
 
@@ -216,10 +221,6 @@ Below are the steps to customize a Dashboard
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-5.png)
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-6.png)
-
-##### Snapshot of the `test.support.random` showing that it is going above 0.90
-
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-7.png)
 
 > What is the difference between a timeboard and a screenboard?
 >
