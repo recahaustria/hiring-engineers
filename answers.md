@@ -279,8 +279,8 @@ Below are the steps to setup a Monitor
 >
 > MySQL TimeBoard
 >
-> https://app.dataoghq.com/dash/290198/mysql---overview-cloned?live=true&page=0&is_auto=false&from_ts=1495115678900&to_ts=1495119278900&tile_size=m
+> https://app.datadoghq.com/dash/290198/mysql-timeboard
 >
 > MongoDB TimeBoard
 >
-> https://app.datadoghq.com/screen/184678/mongodb
+> https://app.datadoghq.com/screen/184678/mongodb-screenboard
