@@ -2,19 +2,21 @@
 
 ## Running Ubuntu 12.04 on Vagrant (Level 0)
 
-* This section assumes that a working copy of Vagrant is installed
-* Please refer to this [link](https://www.vagrantup.com/docs/installation/) for details on how to install Vagrant.
-* Starting the VM:
-```
-$ vagrant init hashicorp/precise64
-$ vagrant up
-```
-* Accessing the VM:
-```
-$ vagrant ssh
-```
+1. Starting the VM:
+    ```
+    $ vagrant init hashicorp/precise64
+    $ vagrant up
+    ```
+1. Accessing the VM:
+    ```
+    $ vagrant ssh
+    ```
+> Note: this section assumes that a working copy of Vagrant is installed.
+>
+> Please refer to this [link](https://www.vagrantup.com/docs/installation/) for details on how to install Vagrant.
 
 ## Collecting Data from Ubuntu 12.04 (Level 1)
+
 ### Signing-up with Datadog
 The first step is to sign-up an account with [Datadog](https://www.datadoghq.com/).
 
@@ -28,9 +30,9 @@ The next step is to provide some optional information about your stack and organ
 ### Installing the Datadog Agent on Ubuntu 12.04
 The next screen will ask you to setup a **Datadog Agent**.
 
->What is a Datadog Agent?
+> What is a Datadog Agent?
 >
->A Datadog Agent is a tool that collects data or metrics from the host OS and sends it to the server (Datadog) which can then be interpreted for monitoring.
+> A Datadog Agent is a tool that collects data or metrics from the host OS and sends it to the server (Datadog) which can then be interpreted for monitoring.
 >
 > Please refer to this [link](http://docs.datadoghq.com/guides/basic_agent_usage/) for more information about the Datadog Agent.
 
@@ -75,27 +77,29 @@ $ sudo apt-get install mysql-server
 
 1. Go to Integrations page
 
-  ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-6.png)
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-6.png)
 
 1. All available integrations are listed. Select MySQL.
 
-  ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-6.1.png)
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-6.1.png)
+
 1. Configure MySQL for Datadog Integration
-  ```
-  $ sudo mysql -e "CREATE USER 'datadog'@'localhost' IDENTIFIED BY '<UNIQUEPASSWORD>';"
-  $ sudo mysql -e "GRANT REPLICATION CLIENT ON *.* TO 'datadog'@'localhost' WITH MAX_USER_CONNECTIONS 5;"
-  ```
+    ```
+    $ sudo mysql -e "CREATE USER 'datadog'@'localhost' IDENTIFIED BY '<UNIQUEPASSWORD>';"
+    $ sudo mysql -e "GRANT REPLICATION CLIENT ON *.* TO 'datadog'@'localhost' WITH MAX_USER_CONNECTIONS 5;"
+    ```
+
 1. To collect full metrics, grant the following:
-  ```
-  $ sudo mysql -e "GRANT PROCESS ON *.* TO 'datadog'@'localhost';"
-  $ sudo mysql -e "GRANT SELECT ON performance_schema.* TO 'datadog'@'localhost';"
-  ```
+    ```
+    $ sudo mysql -e "GRANT PROCESS ON *.* TO 'datadog'@'localhost';"
+    $ sudo mysql -e "GRANT SELECT ON performance_schema.* TO 'datadog'@'localhost';"
+    ```
+
 1. Configure the Datadog Agent to connect to MySQL. Create a file called `/etc/dd-agent/conf.d/mysql.yaml`:
+    ```yaml
+    init_config:
 
-  ```yaml
-  init_config:
-
-  instances:
+    instances:
     - server: localhost
       user: datadog
       pass: <UNIQUEPASSWORD>
@@ -105,14 +109,14 @@ $ sudo apt-get install mysql-server
       options:
           replication: 0
           galera_cluster: 1
-  ```
+    ```
+
 1. Verify the MySQL Integration
+    ```
+    $ sudo /etc/init.d/datadog-agent info
 
-  ```
-  $ sudo /etc/init.d/datadog-agent info
-
-  Checks
-  ======
+    Checks
+    ======
 
     [...]
 
@@ -120,22 +124,20 @@ $ sudo apt-get install mysql-server
     -----
         - instance #0 [OK]
         - Collected 8 metrics & 0 events
-  ```
+    ```
 
 1. Restart the Datadog Agent for the changes to take effect
-
-  ```
-  $ sudo /etc/init.d/datadog-agent restart
-  ```
+    ```
+    $ sudo /etc/init.d/datadog-agent restart
+    ```
 
 1. Click "Install Integration"
 
-  ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-9.png)
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-9.png)
 
 1. After installing, you will now see the MySQL Integration in the Integration Dashboards
 
-  ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-7.png)
-
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-7.png)
 
 The MySQL Dashboard:
 
@@ -150,10 +152,9 @@ This example will show you how to write a Custom Agent Check that sends random m
 >
 > An Agent Check is a script that allows you to collect custom metrics from a data source. Click [here](http://docs.datadoghq.com/guides/agent_checks/) to know more about Agent Checks.
 
-
 ##### Write the custom Agent Check
 
-  Create a configuration in `/etc/dd-agent/conf.d/random.yaml`. Each check has a configuration and these are written using YAML.
+  Create a configuration file called `/etc/dd-agent/conf.d/random.yaml`. Each check has a configuration and these are written using YAML.
 
   ```yaml
   init_config:
@@ -161,7 +162,7 @@ This example will show you how to write a Custom Agent Check that sends random m
   instances:
       [{}]
   ```
-  Create a check in `/etc/dd-agent/conf.d/random.py`. Note that checks and configuration names should match.
+  Create a python file called `/etc/dd-agent/conf.d/random.py`. Note that checks and configuration names should match.
 
   The code below assigns a random value to `test.support.random` everytime the Agent Check runs.
 
@@ -181,22 +182,22 @@ $ sudo -u dd-agent dd-agent check random
 ```
 $ sudo /etc/init.d/datadog-agent restart
 ```
-##### View the Custom Metric in **Metrics Explorer**
+##### View the Custom Metric in "Metrics Explorer"
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level1-11.png)
 
 ## Visualizing Data (Level 2)
 After collecting your metrics, you can use Dashboards to view them in an organized way.
 
-Below are the steps to setup a Custom Dashboard
+Below are the steps to customize a Dashboard
 
-##### Clone database integration dashboard
+##### Clone the MySQL Integration dashboard
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-1.png)
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-2.png)
 
-##### Add additional database metrics. Click "Add Graphs" on the right side of your integration name.
+##### Add additional MySQL metrics. Click "Add Graphs" on the right side of your integration name.
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-2.1.png)
 
@@ -206,7 +207,7 @@ Below are the steps to setup a Custom Dashboard
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-3.png)
 
-##### Add `test.support.random` metric from the Custom Agent check into the dashboard
+##### Add the `test.support.random` metric from the Custom Agent check into the dashboard
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-4.png)
 
@@ -214,7 +215,7 @@ Below are the steps to setup a Custom Dashboard
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-6.png)
 
-##### Snapshot of `test.support.random` showing that it is going above 0.90
+##### Snapshot of the `test.support.random` showing that it is going above 0.90
 
 ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level2-7.png)
 
@@ -222,7 +223,7 @@ Below are the steps to setup a Custom Dashboard
 >
 > Timeboards are scoped at the same time while screenboards can have widgets tha each have a different timeframe.
 >
->Timeboards are used for correlations, while screenboards are for sharing data.
+> Timeboards are used for correlations, while screenboards are for sharing data.
 
 Sample of Timeboard:
 
@@ -247,27 +248,33 @@ Below are the steps to setup a Monitor
 ##### Setup a monitor that alerts when it goes above 0.90 at least once during the last 5 mins.
 
 1. Select New Monitor page
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-1.png)
+    
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-1.png)
 
 1. Select a monitor type
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-2.png)
+   
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-2.png)
 
 1. Define the conditions
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-3.png)
+   
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-3.png)
 
 1. Email is sent when conditions set are met
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Monitor Alert.png)
+   
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Monitor%20Alert.png)
 
 ##### Schedule Downtime for this monitor that silences it from 7pm to 9am daily
 
 1. Click 'Schedule Downtime', and set the schedule and message to send during downtime.
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-4.png)
+    
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Level3-4.png)
 
-2. Email is sent on downtime
-![](https://dl.dropboxusercontent.com/u/10874665/datadog/Downtime Email.png)
+1. Email is sent on downtime
+    
+    ![](https://dl.dropboxusercontent.com/u/10874665/datadog/Downtime%20Email.png)
 
-
-> Refer below for dashboard links
-> https://app.datadoghq.com/dash/list
-> https://app.datadoghq.com/dash/290198/mysql---overview-cloned?live=true&page=0&is_auto=false&from_ts=1495115678900&to_ts=1495119278900&tile_size=m
+> Refer below for Dashboard links
+>
+> https://app.dataoghq.com/dash/290198/mysql---overview-cloned?live=true&page=0&is_auto=false&from_ts=1495115678900&to_ts=1495119278900&tile_size=m
+>
 > https://app.datadoghq.com/screen/184678/mongodb
